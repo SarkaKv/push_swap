@@ -40,7 +40,7 @@ void	makenumbers(char **mynumbers)
 	int **afteratoi;
 	int i = 0;
 	int j = 0;
-
+//won't work need to check for longs first
 	while (mynumbers[i] != NULL)
 		i++;
 	freenoexitchar(mynumbers);
