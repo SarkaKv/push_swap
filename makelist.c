@@ -10,7 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void makelist(char **mynumbers)
+#include "pushswap.h"
+
+void pushintostack(s_stack *stack, int currentint)
 {
+    
+
 
 }
+
+void makestack(int **numbers)
+{
+    s_stack *originalstack = NULL;
+    int forcorrecttop = 0;
+    while(numbers[forcorrecttop] != NULL)
+        forcorrecttop++;
+    forcorrecttop--;
+    while(forcorrecttop >= 0)
+    {
+        pushintostack(&originalstack, numbers[forcorrecttop]);
+        forcorrecttop--;
+    }
+    freenoexitint(numbers);
+    checkfordoubles();
+}
+
+void	makenumbers(char **mynumbers)
+{
+	int **afteratoi;
+	int i = 0;
+	int j = 0;
+
+	while (mynumbers[i] != NULL)
+		i++;
+	freenoexitchar(mynumbers);
+	afteratoi = safemalloc(sizeof(int *) * (i + 1));
+	while (j < i)
+	{
+		afteratoi[j] = safemalloc(sizeof(int));
+		*afteratoi[j] = ft_atoi(mynumbers[j]);
+		j++;
+	}
+	afteratoi[j] = NULL;
+	makestack(afteratoi);
+}
+

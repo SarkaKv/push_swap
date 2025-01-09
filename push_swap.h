@@ -14,12 +14,26 @@
 
 #include "./libft/libft.h"
 
+typedef struct t_stack
+{   
+    int number;
+    struct t_stack* next;
+    struct  t_stack* prev;
+}   s_stack;
+
 
 // argumentcheking
 int checkinput(char *argv);
 char	**oneargumentcheck(char *argv1);
 
-// memory freeing pre-linked list
+// memory helpers
 void	freeexit(char **numberstofree);
+void *safemalloc(size_t size);
+void	freenoexitchar(char **numberstofree);
+void	freenoexitint(int **numberstofree);
+
+// making stack but make it stupidly complicated
+void makenumbers(char **mynumbers);
+
 
 #endif

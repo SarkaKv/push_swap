@@ -12,14 +12,6 @@
 
 #include "pushswap.h"
 
-void *safemalloc(size_t size)
-{
-    void *adress;
-    adress = malloc(size);
-    if(!adress)
-        return NULL;
-    return adress;
-}
 
 int	main(int argc, char **argv)
 {
@@ -30,7 +22,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		numbers = oneargumentcheck(argv[1]);
-		makelist(numbers);
+		makenumbers(numbers);
 	}
 	if (argc > 2)
 	{
@@ -42,7 +34,7 @@ int	main(int argc, char **argv)
 			counter++;
 		}
 		numbers[counter - 1] = NULL;
-		makelist(numbers);
+		makenumbers(numbers);
 	}
 	write(1, "Error\n", 6);
 	return (1);

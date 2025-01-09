@@ -12,21 +12,7 @@
 
 #include "pushswap.h"
 
-void	freeexit(char **numberstofree)
-{
-    int i = 0;
-	if (numberstofree)
-	{
-		while (numberstofree[i] != NULL)
-		{
-			free(numberstofree[i]);
-			i++;
-		}
-		free(numberstofree); 
-	}
-    write(1, "Error\n", 6);
-	exit(1);
-}
+void searchfordoubles()
 
 int	checkinput(char *argv, char **numberstofree)
 {
