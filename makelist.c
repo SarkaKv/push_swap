@@ -10,16 +10,47 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "push_swap.h"
 
-void pushintostack(s_stack *stack, int currentint)
+void checkfordoubles(long int **original, int lenght)
 {
-    
+	int count = 0;
+	int checking;
+	while(count < lenght)
+	{
+		long int currentcheck = *original[count];
+		checking = count + 1;
 
-
+		while(checking < lenght)
+		{
+			if(*original[checking] == currentcheck)
+			{
+				freenoexitint(original);
+				exit(0);
+			}
+			checking++;
+		}
+		count++;
+	}
 }
 
-void makestack(int **numbers)
+void pushintostack(s_stack **stack, int currentint, long int **incaseofmallocfail)
+{
+    s_stack *new_node = safemalloc(sizeof(s_stack));
+	if(!new_node)
+	{
+		freenoexitint(incaseofmallocfail);
+		freexitstack(stack);
+	}
+	new_node->number = currentint;
+	new_node->next = *stack;
+	new_node->prev = NULL;
+	if(*stack != NULL)
+		(*stack)->prev = new_node;
+	*stack = new_node;
+}
+
+void makestack(long int **numbers)
 {
     s_stack *originalstack = NULL;
     int forcorrecttop = 0;
@@ -28,30 +59,39 @@ void makestack(int **numbers)
     forcorrecttop--;
     while(forcorrecttop >= 0)
     {
-        pushintostack(&originalstack, numbers[forcorrecttop]);
+        pushintostack(&originalstack, (int)(*numbers[forcorrecttop]), numbers);
         forcorrecttop--;
     }
     freenoexitint(numbers);
-    checkfordoubles();
+	if(checkifsorted(originalstack) == 1)
+		freeexitstack;
+	else 
+		startsort(originalstack);
 }
 
 void	makenumbers(char **mynumbers)
 {
-	int **afteratoi;
+	long int **afteratol;
 	int i = 0;
 	int j = 0;
-//won't work need to check for longs first
+
 	while (mynumbers[i] != NULL)
 		i++;
-	freenoexitchar(mynumbers);
-	afteratoi = safemalloc(sizeof(int *) * (i + 1));
+	afteratol = safemalloc(sizeof(long int *) * (i + 1));
 	while (j < i)
 	{
-		afteratoi[j] = safemalloc(sizeof(int));
-		*afteratoi[j] = ft_atoi(mynumbers[j]);
+		afteratol[j] = safemalloc(sizeof(long int));
+		*afteratol[j] = ft_atol(mynumbers[j]);
+		if(*afteratol[j] > INT_MAX || *afteratol[j] < INT_MIN)
+		{
+			freenoexitint(afteratol);
+			freeexit(mynumbers);
+		}
 		j++;
 	}
-	afteratoi[j] = NULL;
-	makestack(afteratoi);
+	freenoexitchar(mynumbers);
+	afteratol[j] = NULL;
+	checkfordoubles(afteratol, i);
+	makestack(afteratol);
 }
 

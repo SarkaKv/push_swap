@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 void	freeexit(char **numberstofree)
 {
     int i = 0;
@@ -40,7 +42,7 @@ void	freenoexitchar(char **numberstofree)
 	}
 }
 
-void	freenoexitint(int **numberstofree)
+void	freenoexitlongint(long int **numberstofree)
 {
     int i = 0;
 	if (numberstofree)
@@ -61,4 +63,18 @@ void *safemalloc(size_t size)
     if(!adress)
         return NULL;
     return adress;
+}
+
+void freeexitstack(s_stack *stack)
+{
+	s_stack *stack_cur = *stack;
+	s_stack *next;
+	while(stack_cur != NULL)
+	{
+		next = stack_cur->next;
+		free(stack_cur);
+		stack_cur = next;
+	}
+	*stack = NULL;
+	exit(0);
 }
