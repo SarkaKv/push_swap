@@ -56,16 +56,7 @@ void	freenoexitlongint(long int **numberstofree)
 	}
 }
 
-void *safemalloc(size_t size)
-{
-    void *adress;
-    adress = malloc(size);
-    if(!adress)
-        return NULL;
-    return adress;
-}
-
-void freeexitstack(s_stack *stack)
+void freeexitstack(s_stack *stack, int exit)
 {
 	s_stack *stack_cur = *stack;
 	s_stack *next;
@@ -76,5 +67,8 @@ void freeexitstack(s_stack *stack)
 		stack_cur = next;
 	}
 	*stack = NULL;
-	exit(0);
+	if(exit == 1)
+		exit(0);
+	else 
+		return;
 }

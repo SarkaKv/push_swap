@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void searchfordoubles()
+#include "pushswap.h"
 
 int	checkinput(char *argv, char **numberstofree)
 {

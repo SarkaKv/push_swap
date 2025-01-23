@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checkandutils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skvackov <skvackov@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-01-23 08:18:05 by skvackov          #+#    #+#             */
+/*   Updated: 2025-01-23 08:18:05 by skvackov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 long int atol(char *str)
@@ -38,4 +50,13 @@ int checkifsorted(s_stack *stack)
         }
     }
     return(1);
+}
+
+void *safemalloc(size_t size)
+{
+    void *adress;
+    adress = malloc(size);
+    if(!adress)
+        return NULL;
+    return adress;
 }
