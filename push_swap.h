@@ -11,53 +11,61 @@
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-#include "./libft/libft.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <limits.h>
+# include "./libft/libft.h"
+# include <limits.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct t_stack
-{   
-    int number;
-    struct t_stack* next;
-    struct  t_stack* prev;
-}   s_stack;
-
+{
+	int				number;
+	struct t_stack	*next;
+	struct t_stack	*prev;
+}					s_stack;
 
 // argumentcheking
-int	checkinput(char *argv, char **numberstofree);
-char	**oneargumentcheck(char *argv1);
-void checkfordoubles(long int **original, int lenght);
+int					checkinput(char *argv, char **numberstofree);
+char				**oneargumentcheck(char *argv1);
+void				checkfordoubles(long int **original, int lenght);
 
 // memory helpers
-void	freeexit(char **numberstofree);
-void *safemalloc(size_t size);
-void	freenoexitchar(char **numberstofree);
-void	freenoexitint(int **numberstofree);
-void freeexitstack(s_stack *stack, int exit);
+void				freeexit(char **numberstofree);
+void				*safemalloc(size_t size);
+void				freenoexitchar(char **numberstofree);
+void				freenoexitint(int **numberstofree);
+void				freeexitstack(s_stack *stack, int exit);
 
 // making stack but make it stupidly complicated
-void makenumbers(char **mynumbers);
-long int atol(char *str);
-void makestack(long int **numbers);
-void pushintostack(s_stack **stack, int currentint, long int **incaseofmallocfail);
+void				makenumbers(char **mynumbers);
+long int			atol(char *str);
+void				makestack(long int **numbers);
+void				pushintostack(s_stack **stack, int currentint,
+						long int **incaseofmallocfail);
 
 // cheking for sort and lenght
-int checkifsorted(s_stack *stack);
+int					checkifsorted(s_stack *stack);
 
 // sorting
-void startsort(s_stack *stack);
+void				startsort(s_stack *stack);
 // sorting 1-5
 
 // instructs
-void ss(s_stack **stacka, s_stack **s_stackb);
-void	sb(s_stack **stack);
-void	sa(s_stack **stack);
-void	swap12(s_stack **stack);
-void push(s_stack **pusher, s_stackb **reciever);
-void pushb(s_stack **stacka, s_stackb **stackb);
-void pusha(s_stack **stacka, s_stackb **stackb);
+void				ss(s_stack **stacka, s_stack **s_stackb);
+void				sb(s_stack **stack);
+void				sa(s_stack **stack);
+void				swap12(s_stack **stack);
+void				push(s_stack **pusher, s_stackb **reciever);
+void				pushb(s_stack **stacka, s_stackb **stackb);
+void				pusha(s_stack **stacka, s_stackb **stackb);
+void				doublereverserot(s_stack **stacka, s_stack **s_stackb);
+void				reverserotb(s_stack **stackb);
+void				reverserota(s_stack **stacka);
+void				reverserot(s_stack **s_stack);
+void				rotb(s_stack **stackb);
+void				rr(s_stack **stacka, s_stack **stackb);
+void				rota(s_stack **stacka);
+void				rotting(s_stack **stack);
 
 #endif
