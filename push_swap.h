@@ -44,13 +44,16 @@ void				makestack(long int **numbers);
 void				pushintostack(s_stack **stack, int currentint,
 						long int **incaseofmallocfail);
 
-// cheking for sort and lenght
+// cheking for sort,lenght, index max and min
 int					checkifsorted(s_stack *stack);
-
+int					findmax(s_stack *stacka);
+int					findmin(s_stack *stacka);
+int					listlenght(s_stack *stacka);
 // sorting
 void				startsort(s_stack *stack);
-// sorting 1-5
-
+// sorting 1-5 (rest are void functions)
+void				smallsort(s_stack **stacka, s_stack **stackb,
+						int sizestack);
 // instructs
 void				ss(s_stack **stacka, s_stack **s_stackb);
 void				sb(s_stack **stack);

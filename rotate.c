@@ -19,12 +19,10 @@ void rotting(s_stack **stack)
     s_stack *holdfirst = *stack;
     s_stack *holdlast = *stack;
 
-    // finds the last node in stack
     while(holdlast->next)
     {
         holdlast = holdlast->next;
     }
-    // moves head to second node
     *stack = holdfirst->next;
     (*stack)->prev = NULL;
     holdlast->next = holdfirst;
@@ -36,19 +34,19 @@ void rotting(s_stack **stack)
 void rota(s_stack **stacka)
 {
     ft_putstr_fd("ra\n", 1);
-    rotting(&stacka);
+    rotting(stacka);
 
 }
 void rotb(s_stack **stackb)
 {
     ft_putstr_fd("rb\n", 1);
-    rotting(&stackb);
+    rotting(stackb);
 }
 void rr(s_stack **stacka, s_stack **stackb)
 {
     ft_putstr_fd("rr\n", 1);
-    rotting(&stacka);
-    rotting(&stackb);
+    rotting(stacka);
+    rotting(stackb);
 } 
 
 

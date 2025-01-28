@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-//  Swap the first 2 elements at the top of the stack a. Does nothing if there is only one or none.
 void	swap12(s_stack **stack)
 {
 	s_stack	*firstone;
@@ -43,13 +42,13 @@ void	swap12(s_stack **stack)
 void	sa(s_stack **stack)
 {
 	ft_putstr_fd("sa\n", 1);
-	swap12(&stack);
+	swap12(stack);
 }
 
 void	sb(s_stack **stack)
 {
 	ft_putstr_fd("sb\n", 1);
-	swap12(&stack);
+	swap12(stack);
 }
 
 void ss(s_stack **stacka, s_stack **s_stackb)

@@ -33,11 +33,11 @@ void push(s_stack **pusher, s_stackb **reciever)
 void pushb(s_stack **stacka, s_stackb **stackb)
 {
     ft_putstr_fd("pb\n", 1);
-    push(&stacka, &stackb);
+    push(stacka, stackb);
 }
 
 void pusha(s_stack **stacka, s_stackb **stackb)
 {
     ft_putstr_fd("pa\n", 1);
-    push(&stackb, &stacka);
+    push(stackb, stacka);
 }
