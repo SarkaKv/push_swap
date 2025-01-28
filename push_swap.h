@@ -51,7 +51,7 @@ int					findmin(s_stack *stacka);
 int					listlenght(s_stack *stacka);
 // sorting
 void				startsort(s_stack *stack);
-// sorting 1-5 (rest are void functions)
+// sorting 1-5 (rest are static functions)
 void				smallsort(s_stack **stacka, s_stack **stackb,
 						int sizestack);
 // instructs
