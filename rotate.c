@@ -14,23 +14,22 @@
 
 void rotting(s_stack **stack)
 {
-    (!*stack || !*stack->next)
+    if(!*stack || !*stack->next || !stack)
         return;
-    s_stack *holder = *stack;
-    *stack = (*stack)->next;
-    if(*stack)
-        *stack->prev = NULL;
-    if(!*stack)
-    {
-        *stack = holder;
-        return;
-    }
-    while(stack->next)
-    {
-        stack->next;
-    }
-    
+    s_stack *holdfirst = *stack;
+    s_stack *holdlast = *stack;
 
+    // finds the last node in stack
+    while(holdlast->next)
+    {
+        holdlast = holdlast->next;
+    }
+    // moves head to second node
+    *stack = holdfirst->next;
+    (*stack)->prev = NULL;
+    holdlast->next = holdfirst;
+    holdfirst->prev = holdlast;
+    holdfirst->next = NULL;
 }
 
 
