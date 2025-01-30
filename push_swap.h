@@ -21,6 +21,7 @@
 typedef struct t_stack
 {
 	int				number;
+	int				index;
 	struct t_stack	*next;
 	struct t_stack	*prev;
 }					s_stack;
@@ -51,7 +52,7 @@ int					findmin(s_stack *stacka);
 int					listlenght(s_stack *stacka);
 // sorting
 void				startsort(s_stack *stack);
-// sorting 1-5 (rest are static functions)
+// sorting 1-5 (rest are void functions)
 void				smallsort(s_stack **stacka, s_stack **stackb,
 						int sizestack);
 // instructs
