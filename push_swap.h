@@ -51,7 +51,7 @@ int					findmax(s_stack *stacka);
 int					findmin(s_stack *stacka);
 int					listlenght(s_stack *stacka);
 // sorting
-void				startsort(s_stack *stack);
+void				startsort(s_stack **stack);
 // sorting 1-5 (rest are void functions)
 void				smallsort(s_stack **stacka, s_stack **stackb,
 						int sizestack);
@@ -60,9 +60,9 @@ void				ss(s_stack **stacka, s_stack **s_stackb);
 void				sb(s_stack **stack);
 void				sa(s_stack **stack);
 void				swap12(s_stack **stack);
-void				push(s_stack **pusher, s_stackb **reciever);
-void				pushb(s_stack **stacka, s_stackb **stackb);
-void				pusha(s_stack **stacka, s_stackb **stackb);
+void				push(s_stack **pusher, s_stack **reciever);
+void				pushb(s_stack **stacka, s_stack **stackb);
+void				pusha(s_stack **stacka, s_stack **stackb);
 void				doublereverserot(s_stack **stacka, s_stack **s_stackb);
 void				reverserotb(s_stack **stackb);
 void				reverserota(s_stack **stacka);

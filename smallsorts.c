@@ -88,7 +88,7 @@ void	smallsort(s_stack **stacka, s_stack **stackb, int sizestack)
 {
 	if (sizestack == 2)
 	{
-		if (checkifsorted(stacka) == 0)
+		if (checkifsorted(*stacka) == 0)
 		{
 			sa(stacka);
 		}

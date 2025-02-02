@@ -58,26 +58,31 @@ static int	bitnumberindex(s_stack *a, int lenghtyfella)
 	return (bitcheck);
 }
 
-static void	actualradics(s_stack *a, s_stack *b, int bitnumberomax,
+
+static void	actualradics(s_stack **a, s_stack **b, int bitnumberomax,
 		int lenghtofstack)
 {
-	s_stack	*workingradix;
 	int		iteration;
+	int count = 0;
 
-	workingradix = a;
 	iteration = 0;
-	while (iteration < lenghtofstack)
+	while (iteration < bitnumberomax)
 	{
-		while (workingradix)
+		count = lenghtofstack;
+		while(count > 0)
 		{
-			if ((workingradix->index >> iteration) & 1 == 0)
-			{
-				pushb(&stacka, &stackb);
-			}
+			if(*a && ((*a)->index >> iteration) & 1)
+				ra(a);
 			else
-				ra(stacka);
-			workingradix->
+			{
+				pushb(a, b);
+			}
+			count--;
 		}
+	while(*b)
+	{
+		pusha(a, b);
+	}
 		iteration++;
 	}
 }
@@ -91,23 +96,23 @@ static void setindextom1(s_stack *a)
 	}
 }
 
-void	startsort(s_stack *stacka)
+void	startsort(s_stack **stacka)
 {
 	s_stack *stackb;
 	int lenghtofstack;
 
 	stackb = NULL;
-	lenghtofstack = listleght(stacka);
+	lenghtofstack = listleght(*stacka);
 	if (lenghtofstack <= 5)
 	{
-		sortsmall(stacka, stackb, lenghtofstack);
+		sortsmall(stacka, &stackb, lenghtofstack);
 	}
 	else
 	{
-        setindextom1(stacka);
-		callforindex(stacka, lenghtofstack);
-		int bitnumberomax = bitnumberindex(stacka, lenghtofstack);
-		actualradics(stacka, stackb, bitnumberomax, lenghtofstack);
-        freeexitstack(stacka);
+        setindextom1(*stacka);
+		callforindex(*stacka, lenghtofstack);
+		int bitnumberomax = bitnumberindex(*stacka, lenghtofstack);
+		actualradics(stacka, &stackb, bitnumberomax, lenghtofstack);
+        freeexitstack(stacka, 1); 
 	}
 }

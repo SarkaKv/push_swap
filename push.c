@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void push(s_stack **pusher, s_stackb **reciever)
+void push(s_stack **pusher, s_stack **reciever)
 {
     if(!*pusher)
         return;
@@ -30,13 +30,13 @@ void push(s_stack **pusher, s_stackb **reciever)
     *reciever = hold;
 }
 
-void pushb(s_stack **stacka, s_stackb **stackb)
+void pushb(s_stack **stacka, s_stack **stackb)
 {
     ft_putstr_fd("pb\n", 1);
     push(stacka, stackb);
 }
 
-void pusha(s_stack **stacka, s_stackb **stackb)
+void pusha(s_stack **stacka, s_stack **stackb)
 {
     ft_putstr_fd("pa\n", 1);
     push(stackb, stacka);
