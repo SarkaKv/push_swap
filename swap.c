@@ -51,7 +51,9 @@ void	sb(s_stack **stack)
 	swap12(stack);
 }
 
-void ss(s_stack **stacka, s_stack **s_stackb)
+void ss(s_stack **stacka, s_stack **stackb)
 {
     ft_putstr_fd("ss\n", 1);
+	swap12(stacka);
+	swap12(stackb);
 }

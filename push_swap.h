@@ -36,11 +36,11 @@ void				freeexit(char **numberstofree);
 void				*safemalloc(size_t size);
 void				freenoexitchar(char **numberstofree);
 void				freenoexitint(int **numberstofree);
-void				freeexitstack(s_stack *stack, int exit);
-
+void				freeexitstack(s_stack **stack, int exit);
+void	freenoexitlongint(long int **numberstofree);
 // making stack but make it stupidly complicated
 void				makenumbers(char **mynumbers);
-long int			atol(char *str);
+long int			myatol(char *str);
 void				makestack(long int **numbers);
 void				pushintostack(s_stack **stack, int currentint,
 						long int **incaseofmallocfail);
@@ -64,10 +64,10 @@ void				push(s_stack **pusher, s_stack **reciever);
 void				pushb(s_stack **stacka, s_stack **stackb);
 void				pusha(s_stack **stacka, s_stack **stackb);
 void				doublereverserot(s_stack **stacka, s_stack **s_stackb);
-void				reverserotb(s_stack **stackb);
-void				reverserota(s_stack **stacka);
+void				rrb(s_stack **stackb);
+void				rra(s_stack **stacka);
 void				reverserot(s_stack **s_stack);
-void				rotb(s_stack **stackb);
+void				rb(s_stack **stackb);
 void				rr(s_stack **stacka, s_stack **stackb);
 void				rota(s_stack **stacka);
 void				rotting(s_stack **stack);

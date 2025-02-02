@@ -14,7 +14,7 @@
 
 void reverserot(s_stack **stack)
 {
-    if(!stack || !*stack || !*stack->next)
+    if(!stack || !*stack || !(*stack)->next)
         return;
     s_stack *holdinglast = *stack;
     s_stack *newend = NULL;
@@ -32,13 +32,13 @@ void reverserot(s_stack **stack)
 }
 
 
-void reverserota(s_stack **stacka)
+void rra(s_stack **stacka)
 {
     ft_putstr_fd("rra\n", 1);
     reverserot(stacka);
 }
 
-void reverserotb(s_stack **stackb)
+void rrb(s_stack **stackb)
 {
     ft_putstr_fd("rrb\n", 1);
     reverserot(stackb);

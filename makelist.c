@@ -27,7 +27,7 @@ void	checkfordoubles(long int **original, int lenght)
 		{
 			if (*original[checking] == currentcheck)
 			{
-				freenoexitint(original);
+				freenoexitlongint(original);
 				exit(0);
 			}
 			checking++;
@@ -44,8 +44,8 @@ void	pushintostack(s_stack **stack, int currentint,
 	new_node = safemalloc(sizeof(s_stack));
 	if (!new_node)
 	{
-		freenoexitint(incaseofmallocfail);
-		freexitstack(stack, 1);
+		freenoexitlongint(incaseofmallocfail);
+		freeexitstack(stack, 1);
 	}
 	new_node->number = currentint;
 	new_node->next = *stack;
@@ -70,11 +70,11 @@ void	makestack(long int **numbers)
 		pushintostack(&originalstack, (int)(*numbers[forcorrecttop]), numbers);
 		forcorrecttop--;
 	}
-	freenoexitint(numbers);
+	freenoexitlongint(numbers);
 	if (checkifsorted(originalstack) == 1)
-		freeexitstack(originalstack, 1);
+		freeexitstack(&originalstack, 1);
 	else
-		startsort(originalstack);
+		startsort(&originalstack);
 }
 
 void	makenumbers(char **mynumbers)
@@ -91,10 +91,10 @@ void	makenumbers(char **mynumbers)
 	while (j < i)
 	{
 		afteratol[j] = safemalloc(sizeof(long int));
-		*afteratol[j] = ft_atol(mynumbers[j]);
+		*afteratol[j] = myatol(mynumbers[j]);
 		if (*afteratol[j] > INT_MAX || *afteratol[j] < INT_MIN)
 		{
-			freenoexitint(afteratol);
+			freenoexitlongint(afteratol);
 			freeexit(mynumbers);
 		}
 		j++;

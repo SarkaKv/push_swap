@@ -24,23 +24,23 @@ static void	sort3(s_stack *a, s_stack *b)
         return;
 	if (min == 0)
 	{
-		sa(a);
-		ra(a);
+		sa(&a);
+		rota(&a);
 	}
 	if (min == 1 && max == 0)
 	{
-		rra(a);
-		rra(a);
+		rra(&a);
+		rra(&a);
 	}
 	if (min == 1 && max == 2)
-		sa(a);
+		sa(&a);
 	if (min == 2 && max == 0)
 	{
-		sa(a);
-		rra(a);
+		sa(&a);
+		rra(&a);
 	}
 	if (min == 2 && max == 1)
-		rra(a);
+		rra(&a);
 }
 
 static void sort4(s_stack *a, s_stack *b)
@@ -49,39 +49,39 @@ static void sort4(s_stack *a, s_stack *b)
         return;
     int min = findmin(a);
     if(min == 1)
-        sa(a);
+        sa(&a);
     if(min == 2)
     {
-        rra(a);
-        rra(a);
+        rra(&a);
+        rra(&a);
     }
     if(min == 3)
-        rra(a);
-    pushb(a,b);
+        rra(&a);
+    pushb(&a,&b);
     sort3(a,b);
-    pusha(a,b);
+    pusha(&a,&b);
 }
 
 static void sort5(s_stack  *a, s_stack *b)
 {
     int min = findmin(a);
     if(min == 1)
-        sa(a);
+        sa(&a);
     if(min == 2)
     {
-        ra(a);
-        ra(a);
+        rota(&a);
+        rota(&a);
     }
     if(min == 3)
     {
-        rra(a);
-        rra(a);
+        rra(&a);
+        rra(&a);
     }
     if(min == 4)
-        rra(a);
-    pushb(a,b);
+        rra(&a);
+    pushb(&a,&b);
     sort4(a,b);
-    pusha(a,b);
+    pusha(&a,&b);
 }
 // worst case should be 10
 void	smallsort(s_stack **stacka, s_stack **stackb, int sizestack)
@@ -92,13 +92,13 @@ void	smallsort(s_stack **stacka, s_stack **stackb, int sizestack)
 		{
 			sa(stacka);
 		}
-		freeexitstack(stacka);
+		freeexitstack(stacka, 1);
 	}
 	else if (sizestack == 3)
-		sort3(stacka, stackb);
+		sort3(*stacka, *stackb);
 	else if (sizestack == 4)
-		sort4(stacka, stackb);
+		sort4(*stacka, *stackb);
 	else if (sizestack == 5)
-		sort5(stacka, stackb);
-	freeexitstack(stacka);
+		sort5(*stacka, *stackb);
+	freeexitstack(stacka, 1);
 }

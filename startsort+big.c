@@ -46,7 +46,7 @@ static void	callforindex(s_stack *a, int lenghtofstack)
 	}
 }
 
-static int	bitnumberindex(s_stack *a, int lenghtyfella)
+static int	bitnumberindex(int lenghtyfella)
 {
 	int	bitcheck;
 
@@ -72,7 +72,7 @@ static void	actualradics(s_stack **a, s_stack **b, int bitnumberomax,
 		while(count > 0)
 		{
 			if(*a && ((*a)->index >> iteration) & 1)
-				ra(a);
+				rota(a);
 			else
 			{
 				pushb(a, b);
@@ -102,16 +102,16 @@ void	startsort(s_stack **stacka)
 	int lenghtofstack;
 
 	stackb = NULL;
-	lenghtofstack = listleght(*stacka);
+	lenghtofstack = listlenght(*stacka);
 	if (lenghtofstack <= 5)
 	{
-		sortsmall(stacka, &stackb, lenghtofstack);
+		smallsort(stacka, &stackb, lenghtofstack);
 	}
 	else
 	{
         setindextom1(*stacka);
 		callforindex(*stacka, lenghtofstack);
-		int bitnumberomax = bitnumberindex(*stacka, lenghtofstack);
+		int bitnumberomax = bitnumberindex(lenghtofstack);
 		actualradics(stacka, &stackb, bitnumberomax, lenghtofstack);
         freeexitstack(stacka, 1); 
 	}

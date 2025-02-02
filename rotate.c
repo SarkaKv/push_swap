@@ -14,7 +14,7 @@
 
 void rotting(s_stack **stack)
 {
-    if(!*stack || !*stack->next || !stack)
+    if(!*stack || !(*stack)->next || !stack)
         return;
     s_stack *holdfirst = *stack;
     s_stack *holdlast = *stack;
@@ -37,7 +37,7 @@ void rota(s_stack **stacka)
     rotting(stacka);
 
 }
-void rotb(s_stack **stackb)
+void rb(s_stack **stackb)
 {
     ft_putstr_fd("rb\n", 1);
     rotting(stackb);

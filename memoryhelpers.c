@@ -56,7 +56,7 @@ void	freenoexitlongint(long int **numberstofree)
 	}
 }
 
-void freeexitstack(s_stack *stack, int exit)
+void freeexitstack(s_stack **stack, int exitus)
 {
 	s_stack *stack_cur = *stack;
 	s_stack *next;
@@ -67,7 +67,7 @@ void freeexitstack(s_stack *stack, int exit)
 		stack_cur = next;
 	}
 	*stack = NULL;
-	if(exit == 1)
+	if(exitus == 1)
 		exit(0);
 	else 
 		return;

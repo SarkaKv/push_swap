@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 // add check for more than one - -> shouldnt be accepted
-long int atol(char *str)
+long int myatol(char *str)
 {
     long int sign = 1;
     long int results = 0;
@@ -38,7 +38,7 @@ long int atol(char *str)
 int checkifsorted(s_stack *stack)
 {
     if(!stack || stack->next == NULL)
-        freeexitstack(stack);
+        freeexitstack(&stack, 1);
     s_stack *current = stack;
     while(current->next != NULL)
     {
