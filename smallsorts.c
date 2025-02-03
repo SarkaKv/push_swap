@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	sort3(s_stack *a, s_stack *b)
+void	sort3(s_stack *a, s_stack *b)
 {
     (void)b;
 	int	min;
@@ -22,62 +22,62 @@ static void	sort3(s_stack *a, s_stack *b)
 	max = findmax(a);
     if(min == 0 && max == 2)
         return;
-	if (min == 0)
+	else if (min == 0)
 	{
 		sa(&a);
 		rota(&a);
 	}
-	if (min == 1 && max == 0)
+	else if (min == 1 && max == 0)
 	{
 		rra(&a);
 		rra(&a);
 	}
-	if (min == 1 && max == 2)
+	else if (min == 1 && max == 2)
 		sa(&a);
-	if (min == 2 && max == 0)
+	else if (min == 2 && max == 0)
 	{
 		sa(&a);
 		rra(&a);
 	}
-	if (min == 2 && max == 1)
+	else if (min == 2 && max == 1)
 		rra(&a);
 }
 
-static void sort4(s_stack *a, s_stack *b)
+void sort4(s_stack *a, s_stack *b)
 {
-    if(checkifsorted(a) == 0)
+    if(checkifsorted(a) == 1)
         return;
     int min = findmin(a);
     if(min == 1)
         sa(&a);
-    if(min == 2)
+    else if(min == 2)
     {
         rra(&a);
         rra(&a);
     }
-    if(min == 3)
+    else if(min == 3)
         rra(&a);
     pushb(&a,&b);
     sort3(a,b);
     pusha(&a,&b);
 }
 
-static void sort5(s_stack  *a, s_stack *b)
+void sort5(s_stack  *a, s_stack *b)
 {
     int min = findmin(a);
     if(min == 1)
         sa(&a);
-    if(min == 2)
+    else if(min == 2)
     {
         rota(&a);
         rota(&a);
     }
-    if(min == 3)
+    else if(min == 3)
     {
         rra(&a);
         rra(&a);
     }
-    if(min == 4)
+    else if(min == 4)
         rra(&a);
     pushb(&a,&b);
     sort4(a,b);

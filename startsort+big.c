@@ -59,32 +59,33 @@ static int	bitnumberindex(int lenghtyfella)
 }
 
 
-static void	actualradics(s_stack **a, s_stack **b, int bitnumberomax,
+static int	actualradics(s_stack **a, s_stack **b, int bitnumberomax,
 		int lenghtofstack)
 {
 	int		iteration;
-	int count = 0;
+	int count = lenghtofstack;
 
 	iteration = 0;
 	while (iteration < bitnumberomax)
 	{
-		count = lenghtofstack;
 		while(count > 0)
 		{
+			if(*a == NULL)
+				break;
 			if(*a && ((*a)->index >> iteration) & 1)
 				rota(a);
 			else
-			{
 				pushb(a, b);
-			}
 			count--;
 		}
-	while(*b)
-	{
-		pusha(a, b);
-	}
+		count = lenghtofstack;
+		while(*b)
+		{
+			pusha(a, b);
+		}
 		iteration++;
 	}
+	return(1);
 }
 
 static void setindextom1(s_stack *a)
